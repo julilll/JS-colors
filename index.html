@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .game {
+            width: 600px;
+            height: 600px;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            float: left;
+        }
+
+        .smallbox {
+            width: 60px;
+            height: 60px;
+            float: left;
+        }
+        .smallbox1 {
+            width: 60px;
+            height: 60px;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Exercise 1</h2>
+    <div id="d1" class="game"></div>
+    <h2>Exercise 2</h2>
+    <div id="d2" class="game"></div>
+    <h2>Exercise 2-1 (Color palletes from real world)</h2>
+    <div id="d3" class="game"></div>
+
+    <script>
+        //1: To add: change colors ramdomly for boxes
+
+        //1: Make it with time intervals
+
+        //2: Color table 10x10 with colors that darker or ligther (or brighter)
+
+        let d1 = document.getElementById("d1");
+
+        function random() {
+            return (Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255));
+        }
+
+
+        //Exercise 1
+
+        function firstOne(block) {
+            for (let i = 0; i < 9; i++) {
+                block.innerHTML += "<div class='box' id='b" + i + "' style='background-color: rgb(" + random() + ")'></div>";
+            }
+        }
+
+        let colors = document.getElementsByClassName('box');
+
+        function nextOne(block, x) {
+            setInterval(() => {
+                for (let a = 0; a < colors.length; a++) {
+                    colors[a].style.backgroundColor = "rgb(" + random() + ")";
+                }
+            }, x);
+        }
+
+        firstOne(d1);
+
+        nextOne(d1, 2000);
+
+
+        //Exercise 2
+
+        let d2 = document.getElementById("d2");
+
+        function third(block) {
+            for (let y = 0; y < 10; y++) {
+                let r = (Math.floor(Math.random() * 205));
+                let g = (Math.floor(Math.random() * 205));
+                let b = (Math.floor(Math.random() * 205));
+                for (let i = 0; i < 50; i += 5) {
+                    block.innerHTML += "<div class='smallbox' id='bb" + (i + y) + "' style='background-color: rgb(" + (r + i) + " , " + (g + i) + " , " + (b + i) + ")'></div>";
+                }
+            }
+        }
+
+        third(d2);
+
+        //Exercise 2-1
+
+        let d3 = document.getElementById("d3");
+
+        function forth(block) {
+            let r1 = (Math.floor(Math.random() * 155));
+            let g1 = (Math.floor(Math.random() * 155));
+            let b1 = (Math.floor(Math.random() * 155));
+            for (let y = 0; y < 100; y += 10) {
+                r1 += 10;
+                g1 += 1;
+                b1 += 5;
+                for (let i = 0; i < 100; i += 10) {
+                    block.innerHTML += "<div class='smallbox' id='cc" + (i + y) + "' style='background-color: rgb(" + (r1 + i) + " , " + (g1 + i) + " , " + (b1 + i) + ")'></div>";
+                }
+            }
+        }
+
+        forth(d3);
+
+
+    </script>
+
+</body>
+
+</html>
